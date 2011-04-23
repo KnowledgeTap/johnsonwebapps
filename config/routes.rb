@@ -1,4 +1,23 @@
 Johnsonwebapps::Application.routes.draw do
+  
+  #resources :users
+  
+  resources :users, :user_sessions
+  	match 'login' => 'user_sessions#new', :as => :login
+  	match 'logout' => 'user_sessions#destroy', :as => :logout
+  
+  resources :projects
+
+  resources :abouts
+
+  resources :contacts
+
+  get "pages/contact"
+
+  get "pages/about"
+
+  resources :homes
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

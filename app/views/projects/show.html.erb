@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @project.name %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%= @project.description.html_safe %>
+</p>
+
+<% if @project.photo.exists? then %>
+	
+	<a href="<%= @project.link %>" target="_blank"><%= image_tag @project.photo.url(:small) %> </a>
+<% end %>
+<% if current_user %>
+<%= link_to 'Edit', edit_project_path(@project) %> |
+<%= link_to 'Back', projects_path %>
+<% end %>

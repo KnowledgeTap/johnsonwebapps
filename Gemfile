@@ -7,6 +7,12 @@ gem 'rails', '3.0.3'
 
 #gem 'sqlite3-ruby', :require => 'sqlite3'
 gem 'mysql2'
+gem 'paperclip', :git => 'git://github.com/thoughtbot/paperclip.git'
+gem 'tiny_mce'
+#gem 'authlogic', :git => 'http://github.com/binarylogic/authlogic.git'
+ gem 'authlogic', :git => 'git://github.com/odorcicd/authlogic.git', :branch => 'rails3'
+                
+
 
 # Use unicorn as the web server
 # gem 'unicorn'

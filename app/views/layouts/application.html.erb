@@ -1,14 +1,45 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Johnsonwebapps</title>
+  <title>JohnsonWebApps</title>
   <%= stylesheet_link_tag :all %>
   <%= javascript_include_tag :defaults %>
   <%= csrf_meta_tag %>
+  <%= include_tiny_mce_if_needed %>
+
 </head>
 <body>
-
+<div class="maincontent">
+<div class="header">
+<%= link_to image_tag(src="/images/header.jpg"),{:controller => "homes", :action => "show", :id => "1"} %>
+ 
+</div>
+<div class="mainmenu">
+<%=link_to "Home", {:controller => "homes", :action => "show", :id => "1"}, :class => "menuitem" %> |
+<%=link_to "Projects", {:controller => "projects", :action => "index"}, :class => "menuitem" %> |
+<%=link_to "About Us", {:controller => "abouts", :action => "index"}, :class => "menuitem" %> |
+<%=link_to "Contact Us", {:controller => "contacts", :action => "show", :id => "1"}, :class => "menuitem" %>
+<!--
+<%=link_to "About Us", {:controller => "pages", :action => "about"}, :class => "menuitem" %> |
+<%=link_to "Contact Us", {:controller => "pages", :action => "contact"}, :class => "menuitem" %> |
+-->
+</div>
+<div class="maincontent2">
 <%= yield %>
-
+</div>
+</div>
+<div class="footer">
+This site designed and developed by<%= link_to "JohnsonWebApps", {:controller => "homes", :action => "show", :id => "1"}, :class => "menuitem" %>
+<div id="nav">
+       
+        <% if current_user %>
+        <%= link_to "Edit Profile", edit_user_path(current_user.id), :class => "menuitem"%> |
+        <%= link_to "Logout", :logout, :class => "menuitem"%>
+        <% else %>
+        <%= link_to "Register", new_user_path, :class => "menuitem"%> |
+        <%= link_to "Login", :login, :class => "menuitem" %>
+        <% end %>
+    </div>    
+</div>
 </body>
 </html>

@@ -1,0 +1,42 @@
+<h1>Recent Projects</h1>
+
+<table>
+  <tr>
+  <!--
+    <th>Name</th>
+    <th>Description</th>
+    <th></th>
+    <th></th>
+    <th></th>
+    -->
+  </tr>
+
+<% @projects.each do |project| %>
+  <tr>
+  	<td>
+  	<% if project.photo.exists? then %>
+  	
+  	<% if !project.link.nil? then %>
+	
+	<a href="<%= project.link %>" target="_blank"><%= image_tag project.photo.url(:thumb) %> </a>
+	<% else %>
+	<%= image_tag project.photo.url(:thumb) %>
+	<% end %>
+	
+	<% end %>
+	</td>
+    <td><%= project.name %></td>
+    <td><%= project.description.html_safe %></td>
+    <td><%= link_to 'More Information', project %></td>
+    <% if current_user %>
+    <td><%= link_to 'Edit', edit_project_path(project) %></td>
+    <td><%= link_to 'Destroy', project, :confirm => 'Are you sure?', :method => :delete %></td>
+ 	<% end %>
+ </tr>
+<% end %>
+</table>
+
+<br />
+<% if current_user %>
+<%= link_to 'New Project', new_project_path %>
+<% end %>

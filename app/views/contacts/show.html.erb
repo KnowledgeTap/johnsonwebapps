@@ -1,0 +1,18 @@
+<h1>Contact Us</h1>
+
+<p id="notice"><%= notice %></p>
+<!--
+<p>
+  <b>Name:</b>
+  <%= @contact.name %>
+</p>
+-->
+<p>
+  
+  <%= @contact.main.html_safe %>
+</p>
+
+<% if current_user %>
+<%= link_to 'Edit', edit_contact_path(@contact) %> |
+<%= link_to 'Back', contacts_path %>
+<% end %>

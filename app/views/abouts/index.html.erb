@@ -1,0 +1,20 @@
+<h1>About Us</h1>
+
+<% @abouts.each do |about| %>
+<% if about.photo.exists? then %>
+<%= image_tag about.photo.url(:thumb) %>
+<% end %>
+<h2><%= about.name %></h2>
+<%= about.main %><br />
+<!-- <%= link_to 'Show', about %> | -->
+<% if current_user %>
+<%= link_to 'Edit', edit_about_path(about) %> | <%= link_to 'Destroy', about, :confirm => 'Are you sure?', :method => :delete %>
+<% end %>
+ 
+<% end %>
+
+
+<br />
+<% if current_user %>
+<%= link_to 'New About', new_about_path %>
+<% end %>

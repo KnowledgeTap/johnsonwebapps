@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+<!--
+<p>
+  <b>Name:</b>
+  <%= @home.name %>
+</p>
+-->
+<div class="leftcolumn">
+  
+  <%= @home.main.html_safe %>
+</div>
+<div class="leftcolumn">
+<% if @home.photo.exists? then %>
+<%= image_tag @home.photo.url(:thumb) %>
+<% end %>
+
+<!--
+<% @random_photo = @projects.sample %>
+-->
+
+<% @projects.each do |project| %>
+	<% if project.photo.exists? then %>	
+		<a href="<%= project.link %>" target="_blank"><%= image_tag project.photo.url(:thumb) %> </a>
+	<% end %>
+<% end %>
+
+
+
+</div>
+<% if current_user %>
+<%= link_to 'Edit', edit_home_path(@home) %> |
+<%= link_to 'Back', homes_path %>
+<% end %>
